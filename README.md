@@ -70,6 +70,5 @@ gaiacli q bank balances $ADDR_GOZ --node=$RPC_GOZ --chain-id=gameofzoneshub-1a
 gaiacli tx send $ADDR_AIB $YOUR_AIB_ADDR 1000bits
 
 # how to send tokens via remote RPC
-gaiacli tx send $ADDR_GOZ $YOUR_GOZ_ADDR 100000doubloons --node
-=$RPC_GOZ --chain-id=gameofzoneshub-1a
+gaiacli tx send $ADDR_GOZ $YOUR_GOZ_ADDR 100000doubloons --node=$RPC_GOZ --chain-id=gameofzoneshub-1a
 ```
