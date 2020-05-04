@@ -64,5 +64,12 @@ rly tx transfer $C_AIB $C_GOZ 500bits true (rly ch addr $C_GOZ)
 gaiacli q bank balances $ADDR_AIB
 
 # how to query your balance on another blockchain
-gaiacli q bank balances $ADDR_GOZ --node=$RPC_GOZ
+gaiacli q bank balances $ADDR_GOZ --node=$RPC_GOZ --chain-id=gameofzoneshub-1a
+
+# send tokens via local RPC
+gaiacli tx send $ADDR_AIB $YOUR_AIB_ADDR 1000bits
+
+# how to send tokens via remote RPC
+gaiacli tx send $ADDR_GOZ $YOUR_GOZ_ADDR 100000doubloons --node
+=$RPC_GOZ --chain-id=gameofzoneshub-1a
 ```
