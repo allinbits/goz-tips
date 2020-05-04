@@ -1,0 +1,1 @@
+{"key":"faucet","chain-id":"aib-goz-1","rpc-addr":"http://n01.gozlira.com:26657","account-prefix":"cosmos","gas":200000,"gas-prices":"0.025bits","default-denom":"bits","trusting-period":"90m"}
