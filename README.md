@@ -41,6 +41,7 @@ rly q bal $C_AIB
 # restore goz account key
 rly keys restore $C_GOZ testkey "mnemonic"
 rly ch edit $C_GOZ key testkey
+rly q bal $C_GOZ
 
 # create a new path between both zones
 rly pth gen -f $C_AIB transfer $C_GOZ transfer $AIB_GOZ
