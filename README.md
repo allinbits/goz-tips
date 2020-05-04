@@ -4,7 +4,16 @@ Guide to connect to the Game of Zones Hub.
 ## Relayer
 
 ```
-# add aliases to your shell (these are for fish shell)
+# add aliases to your preferred shell
+
+# bash/zsh aliases
+alias C_AIB='aib-goz-1'
+alias C_GOZ='gameofzoneshub-1a'
+alias ADDR_AIB='cosmos1dee8te2quczv4gkyckxk9nlr3aefyw77c73pqw'
+alias ADDR_GOZ='cosmos1xnc4hwja48e77nms0a49eqkdw36d7dqzrj006n'
+alias RPC_GOZ='http://35.233.155.199:26657'
+
+# fish shell aliases
 set -Ux C_AIB aib-goz-1
 set -Ux C_GOZ gameofzoneshub-1a
 set -Ux ADDR_AIB cosmos1dee8te2quczv4gkyckxk9nlr3aefyw77c73pqw
@@ -14,7 +23,7 @@ set -Ux RPC_GOZ http://35.233.155.199:26657
 # remove your old relayer config folder
 rm -rf ~/.relayer
 
-# setup relayer config folder
+# setup a new relayer config folder
 rly cfg init
 
 # add at least two zones via their JSON files
@@ -39,7 +48,12 @@ rly pth gen -f $C_AIB transfer $C_GOZ transfer $AIB_GOZ
 # ensure path exists
 rly tx link $AIB_GOZ
 
-# send tokens
+# try sending tokens, e.g bits from aib to goz
+
+# for bash/zsh
+rly tx transfer $C_AIB $C_GOZ 500bits true $(rly ch addr $C_GOZ)
+
+# for fish
 rly tx transfer $C_AIB $C_GOZ 500bits true (rly ch addr $C_GOZ)
 ```
 
