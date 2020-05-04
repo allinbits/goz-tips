@@ -18,7 +18,7 @@ rm -rf ~/.relayer
 rly cfg init
 
 # add at least two zones via their JSON files
-rly chains add-dir ~/goz-zones/
+rly chains add-dir ./zones/
 
 # initialize light clients for both chains
 rly lite init -f $C_AIB
