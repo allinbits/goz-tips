@@ -58,6 +58,45 @@ rly tx transfer $C_AIB $C_GOZ 500bits true $(rly ch addr $C_GOZ)
 rly tx transfer $C_AIB $C_GOZ 500bits true (rly ch addr $C_GOZ)
 ```
 
+## debugging relayer issues
+```
+# relayer errors when trying to send
+# you need to make sure when you run `rly tx link $AIB_GOZ`
+# you get a checkmark next to channel created, e.g.
+Channel created: [aib-goz-1]chan{oigbfuzeen}port{transfer}
+
+# if you created a path 90 minutes ago, you  may need to
+# create a new path due to the default path timeout
+
+# client: packet commitment verification failed
+# if you get this error you may have unsent tx in the queue
+# view unrelayed txs with:
+rly q unrelayed $AIB_GOZ
+
+# you may see some unrelayed txs
+│{"src":["1","2"]}
+
+# you can relay unsent txs with
+rly tx rly $AIB_GOZ
+
+#----------
+# err(sdk: out of gas) 
+# if you get this error you may have to increase the gas amount
+rly ch edit $C_GOZ gas {{ higher_amount }}
+
+# then relay unsent again with 
+rly tx rly $AIB_GOZ
+
+#----------
+# err(sdk: insufficient funds)
+# if you get this error you need to add more tokens to your account
+# or alternatively increase the gas amount
+# see how much gas a transaction would cost by appending -d 
+
+# for example to see how much sending all unrelayed txs would cost is 
+rly tx rly $AIB_GOZ -d
+```
+
 ## gaiacli
 ```
 # query your balance on the local chain
