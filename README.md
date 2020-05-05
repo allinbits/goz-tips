@@ -65,23 +65,25 @@ rly tx transfer $C_AIB $C_GOZ 500bits true (rly ch addr $C_GOZ)
 # you get a checkmark next to "channel created" e.g.
 Channel created: [aib-goz-1]chan{oigbfuzeen}port{transfer}
 
-# if you created a path 90 minutes ago, you will need to
-# re-init the lite clients and create a new path
+# Error: verify non adjacent from # to # failed:
+# if you created a path over 90 minutes ago, you will need 
+# to re-init the lite clients and create a new path
 rly paths delete $AIB_GOZ
 rly lite init -f $C_AIB
 rly lite init -f $C_GOZ
 rly pth gen -f $C_AIB transfer $C_GOZ transfer $AIB_GOZ
 rly tx link $AIB_GOZ
 
-# client: packet commitment verification failed
-# if you get this error you may have unsent tx in the queue
-# view unrelayed txs with:
+# err client: packet commitment verification failed
+# err channels: invalid channel state
+# if you get these errors you may have unsent tx in the
+# relayer queue. View a chain's unrelayed txs with:
 rly q unrelayed $AIB_GOZ
 
-# you may see some unrelayed txs
+# it should show some unrelayed txs:
 {"src":["1","2"]}
 
-# you can relay unsent txs with
+# you can try to send unsent txs again:
 rly tx rly $AIB_GOZ
 
 #----------
