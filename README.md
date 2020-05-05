@@ -60,15 +60,18 @@ rly tx transfer $C_AIB $C_GOZ 500bits true (rly ch addr $C_GOZ)
 
 ## Debugging relayer issues
 ```
-# relayer errors when trying to send
+# General notice on errors
 # you need to make sure when you run `rly tx link $AIB_GOZ`
-# you get a checkmark next to channel created, e.g.
+# you get a checkmark next to "channel created" e.g.
 Channel created: [aib-goz-1]chan{oigbfuzeen}port{transfer}
 
-# if you created a path 90 minutes ago, you  may need to
-# create a new path due to the default path timeout
+# if you created a path 90 minutes ago, you will need to
+# re-init the lite clients and create a new path
 rly paths delete $AIB_GOZ
-rly paths gen -f {{ etc }}
+rly lite init -f $C_AIB
+rly lite init -f $C_GOZ
+rly pth gen -f $C_AIB transfer $C_GOZ transfer $AIB_GOZ
+rly tx link $AIB_GOZ
 
 # client: packet commitment verification failed
 # if you get this error you may have unsent tx in the queue
