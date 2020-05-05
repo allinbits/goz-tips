@@ -67,6 +67,8 @@ Channel created: [aib-goz-1]chan{oigbfuzeen}port{transfer}
 
 # if you created a path 90 minutes ago, you  may need to
 # create a new path due to the default path timeout
+rly paths delete $AIB_GOZ
+rly paths gen -f {{ etc }}
 
 # client: packet commitment verification failed
 # if you get this error you may have unsent tx in the queue
@@ -74,7 +76,7 @@ Channel created: [aib-goz-1]chan{oigbfuzeen}port{transfer}
 rly q unrelayed $AIB_GOZ
 
 # you may see some unrelayed txs
-│{"src":["1","2"]}
+{"src":["1","2"]}
 
 # you can relay unsent txs with
 rly tx rly $AIB_GOZ
