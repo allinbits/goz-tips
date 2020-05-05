@@ -1,5 +1,5 @@
-# Relayer Setup for GoZ
-Guide to connect to the Game of Zones Hub.
+# Seond tokens to GoZ Hub
+Tips and tricks to send tokens to and from the Game of Zones Hub.
 
 ## Relayer
 
