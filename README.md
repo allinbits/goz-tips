@@ -1,7 +1,7 @@
-# Seond tokens to GoZ Hub
-Tips and tricks to send tokens to and from the Game of Zones Hub.
+# Seond tokens to GoZ Hub 
+Tips and tricks to send tokens to and from the Game of Zones Hub with Iqlusion's relayer software.
 
-## Relayer
+## Send tokens between zones
 
 ```
 # add aliases to your preferred shell
@@ -58,7 +58,7 @@ rly tx transfer $C_AIB $C_GOZ 500bits true $(rly ch addr $C_GOZ)
 rly tx transfer $C_AIB $C_GOZ 500bits true (rly ch addr $C_GOZ)
 ```
 
-## debugging relayer issues
+## Debugging relayer issues
 ```
 # relayer errors when trying to send
 # you need to make sure when you run `rly tx link $AIB_GOZ`
@@ -97,7 +97,7 @@ rly tx rly $AIB_GOZ
 rly tx rly $AIB_GOZ -d
 ```
 
-## gaiacli
+## Useful gaiacli commands
 ```
 # query your balance on the local chain
 gaiacli q bank balances $ADDR_AIB
