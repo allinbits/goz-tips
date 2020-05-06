@@ -1,4 +1,4 @@
-# Seond tokens to GoZ Hub 
+# Send tokens to GoZ Hub 
 Tips and tricks to send tokens to and from the Game of Zones Hub with Iqlusion's relayer software.
 
 ## Send tokens between zones
